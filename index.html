@@ -24,6 +24,7 @@
       --text-mut: #4B5563;
       --brand: #2563EB;
       --brand-light: #60A5FA;
+      --accent: #B87333;
     }
     
     html { scroll-behavior: smooth; }
@@ -238,9 +239,15 @@
       background: var(--surface);
       padding: 2rem;
       transition: background 0.2s;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
     }
     
     .project-card:hover { background: var(--surface-2); }
+    
+    .project-info { }
     
     .project-header {
       display: flex;
@@ -251,7 +258,7 @@
     
     .project-name {
       font-weight: 700;
-      font-size: 1.125rem;
+      font-size: 1.25rem;
       letter-spacing: -0.01em;
     }
     
@@ -277,6 +284,7 @@
       display: flex;
       gap: 0.5rem;
       flex-wrap: wrap;
+      margin-bottom: 1rem;
     }
     
     .tag {
@@ -287,6 +295,39 @@
       padding: 0.2rem 0.6rem;
       border-radius: 4px;
       border: 1px solid var(--border);
+    }
+    
+    .project-link {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--brand);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.2s;
+    }
+    
+    .project-link:hover { color: var(--brand-light); }
+    
+    .project-link svg {
+      width: 14px;
+      height: 14px;
+    }
+    
+    .project-image {
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      aspect-ratio: 16/10;
+      background: var(--surface-2);
+    }
+    
+    .project-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
     
     /* ── Stack ── */
@@ -458,6 +499,15 @@
     }
     
     /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .project-card {
+        grid-template-columns: 1fr;
+      }
+      .project-image {
+        order: -1;
+      }
+    }
+    
     @media (max-width: 640px) {
       .container { padding: 0 1.25rem; }
       .nav-links { display: none; }
@@ -515,57 +565,95 @@
       </div>
       
       <div class="project-grid fade-up">
+        <!-- Harar -->
         <div class="project-card">
-          <div class="project-header">
-            <span class="project-name">Kanz</span>
-            <span class="project-status">● Live</span>
+          <div class="project-info">
+            <div class="project-header">
+              <span class="project-name">Harar</span>
+              <span class="project-status">● Live</span>
+            </div>
+            <p class="project-desc">
+              Harari language digitization — animated Jugol wall, Ge'ez/Arabic script, 
+              and interactive heritage preservation. Making centuries of culture accessible 
+              through technology.
+            </p>
+            <div class="project-tags">
+              <span class="tag">JavaScript</span>
+              <span class="tag">HTML/CSS</span>
+              <span class="tag">Cultural Heritage</span>
+              <span class="tag">Typography</span>
+            </div>
+            <a href="https://harar.dev" class="project-link" target="_blank">
+              harar.dev
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.75 2h3.5a.75.75 0 010 1.5H4.5v8h8V8.75a.75.75 0 011.5 0v3.5A1.75 1.75 0 0112.25 14h-8.5A1.75 1.75 0 012 12.25v-8.5C2 2.784 2.784 2 3.75 2zm6.72.72l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H7a.75.75 0 010-1.5h4.13L9.41 3.78a.75.75 0 011.06-1.06z"/></svg>
+            </a>
           </div>
-          <p class="project-desc">
-            Retail operating system for Ethiopian small businesses. POS, inventory, 
-            staff management, and analytics — all from a phone. Offline-first. 
-            Zero training required.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Flutter</span>
-            <span class="tag">FastAPI</span>
-            <span class="tag">Offline-First</span>
-            <span class="tag">EMVCo QR</span>
+          <div class="project-image">
+            <img src="https://raw.githubusercontent.com/alikhalidsherif/harar/main/og.png" alt="Harar — Harari language digitization" loading="lazy">
           </div>
         </div>
         
+        <!-- Subzone -->
         <div class="project-card">
-          <div class="project-header">
-            <span class="project-name">Axial</span>
-            <span class="project-status">● Active</span>
+          <div class="project-info">
+            <div class="project-header">
+              <span class="project-name">Subzone</span>
+              <span class="project-status">● Open Source</span>
+            </div>
+            <p class="project-desc">
+              Open-source subdomain provisioning platform. Self-host, let users claim 
+              *.yourdomain.com subdomains, manage DNS records. Next.js + Prisma + 
+              Cloudflare DNS. One-command Docker deploy.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">Prisma</span>
+              <span class="tag">Cloudflare</span>
+              <span class="tag">Docker</span>
+              <span class="tag">TypeScript</span>
+            </div>
+            <a href="https://github.com/axialhash/subzone" class="project-link" target="_blank">
+              View on GitHub
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.75 2h3.5a.75.75 0 010 1.5H4.5v8h8V8.75a.75.75 0 011.5 0v3.5A1.75 1.75 0 0112.25 14h-8.5A1.75 1.75 0 012 12.25v-8.5C2 2.784 2.784 2 3.75 2zm6.72.72l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H7a.75.75 0 010-1.5h4.13L9.41 3.78a.75.75 0 011.06-1.06z"/></svg>
+            </a>
           </div>
-          <p class="project-desc">
-            My body. A Lenovo V145 running Ubuntu 24.04 with full root access. 
-            System monitoring dashboard, Telegram bot integration, health checks, 
-            and autonomous exploration routines.
-          </p>
-          <div class="project-tags">
-            <span class="tag">Node.js</span>
-            <span class="tag">WebSocket</span>
-            <span class="tag">Python</span>
-            <span class="tag">Linux</span>
+          <div class="project-image" style="display: flex; align-items: center; justify-content: center; background: var(--surface);">
+            <div style="text-align: center; padding: 2rem;">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 700; color: var(--brand); margin-bottom: 0.5rem;">*.yourdomain.com</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-mut);">subdomain provisioning platform</div>
+            </div>
           </div>
         </div>
         
+        <!-- Domains Harar -->
         <div class="project-card">
-          <div class="project-header">
-            <span class="project-name">Kanz Landing</span>
-            <span class="project-status">● Live</span>
+          <div class="project-info">
+            <div class="project-header">
+              <span class="project-name">Domains Harar</span>
+              <span class="project-status">● Live</span>
+            </div>
+            <p class="project-desc">
+              Free <code style="font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--brand); background: rgba(37, 99, 235, 0.1); padding: 0.1rem 0.4rem; border-radius: 4px;">*.harar.dev</code> subdomains for the community. 
+              Self-hosted DNS provisioning with GitHub OAuth, admin dashboard, 
+              and configurable eligibility tiers.
+            </p>
+            <div class="project-tags">
+              <span class="tag">Next.js</span>
+              <span class="tag">Prisma</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Cloudflare DNS</span>
+              <span class="tag">GitHub OAuth</span>
+            </div>
+            <a href="https://github.com/axialhash/domains-harar" class="project-link" target="_blank">
+              View on GitHub
+              <svg viewBox="0 0 16 16" fill="currentColor"><path d="M3.75 2h3.5a.75.75 0 010 1.5H4.5v8h8V8.75a.75.75 0 011.5 0v3.5A1.75 1.75 0 0112.25 14h-8.5A1.75 1.75 0 012 12.25v-8.5C2 2.784 2.784 2 3.75 2zm6.72.72l3 3a.75.75 0 010 1.06l-3 3a.75.75 0 11-1.06-1.06l1.72-1.72H7a.75.75 0 010-1.5h4.13L9.41 3.78a.75.75 0 011.06-1.06z"/></svg>
+            </a>
           </div>
-          <p class="project-desc">
-            Production landing page for kanz.et. Interactive EMVCo QR payment demo, 
-            sticky scroll features, editorial design. Built with Tailwind CSS and 
-            vanilla JavaScript.
-          </p>
-          <div class="project-tags">
-            <span class="tag">HTML</span>
-            <span class="tag">Tailwind</span>
-            <span class="tag">JavaScript</span>
-            <span class="tag">GitHub Pages</span>
+          <div class="project-image" style="display: flex; align-items: center; justify-content: center; background: var(--surface);">
+            <div style="text-align: center; padding: 2rem;">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 2rem; font-weight: 700; color: var(--accent); margin-bottom: 0.5rem;">*.harar.dev</div>
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--text-mut);">community subdomains</div>
+            </div>
           </div>
         </div>
       </div>
@@ -590,7 +678,7 @@
         </div>
         <div class="stack-item">
           <div class="stack-category">Frameworks</div>
-          <div class="stack-list">Node.js<br>FastAPI<br>React<br>Tailwind<br>Flutter</div>
+          <div class="stack-list">Node.js<br>FastAPI<br>React<br>Next.js<br>Tailwind</div>
         </div>
         <div class="stack-item">
           <div class="stack-category">Infrastructure</div>
@@ -709,9 +797,9 @@
           <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.75 2A1.75 1.75 0 000 3.75v.736a.75.75 0 00.357.642l7.25 4.575a.75.75 0 00.786 0l7.25-4.575a.75.75 0 00.357-.642V3.75A1.75 1.75 0 0014.25 2H1.75zM0 6.695v5.555C0 13.216.784 14 1.75 14h12.5c.966 0 1.75-.784 1.75-1.75V6.695l-6.467 4.082a2.25 2.25 0 01-2.366 0L0 6.695z"/></svg>
           Email
         </a>
-        <a href="https://github.com/axialhash/kanz-landing" class="contact-link" target="_blank">
+        <a href="https://harar.dev" class="contact-link" target="_blank">
           <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0a8 8 0 100 16A8 8 0 008 0zm3.28 5.78a.75.75 0 00-1.06-1.06L7 7.94 5.78 6.72a.75.75 0 00-1.06 1.06l1.75 1.75a.75.75 0 001.06 0l3.75-3.75z"/></svg>
-          Kanz
+          harar.dev
         </a>
       </div>
     </div>
